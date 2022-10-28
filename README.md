@@ -1,29 +1,54 @@
-# shop-vue
+# shop-frontend-vue
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## 接口根地址
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+http://localhost:8080/api
 
-## Customize configuration
+## 接口地址
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
 
-```sh
-npm install
+### /login
+请求
+```json
+{
+    "email":"test@p.p",
+    "password":"password"
+}
+```
+响应
+```json
+{
+    "code": 0,
+    "msg": "登录成功",
+    "data": {
+        "email": "test@p.p",
+        "username": "@cname",
+        "token": "token_1145141919",
+        "role": "admin"
+    }
+}
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+### /register
+请求
+```json
+{
+    "email": "email",
+    "username": "username",
+    "password": "password"
+}
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
+响应
+```json
+{
+   "code": 0,
+   "msg": "注册成功",
+   "data": {
+        "username": "test",
+        "email": "test@p.p",
+        "uid": 123
+   }
+}
 ```
