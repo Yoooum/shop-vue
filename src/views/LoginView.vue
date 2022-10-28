@@ -37,6 +37,7 @@ import login from '../service/api/user'
 import { useRouter } from 'vue-router'
 import { getToken,setToken,removeToken } from '../service/auth'
 import { useStore } from 'vuex'
+import { notice } from '../service/utils'
 const store = useStore()
 const router = useRouter()
 // 登录表单
@@ -66,6 +67,7 @@ const onSubmit = () => {
         if (!valid) return
         login(loginForm).then(res=>{
             console.log(res);
+            notice('success','登录成功')
             // 设置token
             setToken(res.data.token)
             // 获取用户信息
