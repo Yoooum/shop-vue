@@ -24,4 +24,3 @@ axios.interceptors.request.use(res => {
     return Promise.reject(err)
 })
 export default axios
-
