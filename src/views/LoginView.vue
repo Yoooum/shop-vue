@@ -33,7 +33,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-//import api from '../api/user'
+import { USER } from '../service/api/user'
 
 // 登录表单
 const loginForm = reactive({
@@ -60,9 +60,8 @@ const loginFormRef = ref(null)
 const login = () => {
     loginFormRef.value.validate(async valid => {
         if (!valid) return
-        // const { data } = await api.login(loginForm)
-        // alert(data)
-        this.$router.push('/')
+        const { data } = await USER.login(loginForm)
+        console.log(data);
     })
 }
 
