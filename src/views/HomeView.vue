@@ -1,5 +1,9 @@
 <script setup>
+import { useCookies } from '@vueuse/integrations/useCookies'
 import TheWelcome from '../components/TheWelcome.vue'
+
+const cookies = useCookies()
+
 </script>
 
 <template>

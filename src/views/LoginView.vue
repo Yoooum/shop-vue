@@ -23,7 +23,7 @@
                         </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="w-60" type="primary" @click="login">登录</el-button>
+                        <el-button class="w-60" type="primary" @click="onSubmit">登录</el-button>
                     </el-form-item>
                 </el-form>
             </el-card>
@@ -33,8 +33,12 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import { USER } from '../service/api/user'
-
+import login from '../service/api/user'
+import { useRouter } from 'vue-router'
+import { getToken,setToken,removeToken } from '../service/auth'
+import { useStore } from 'vuex'
+const store = useStore()
+const router = useRouter()
 // 登录表单
 const loginForm = reactive({
     email: '',
@@ -57,11 +61,20 @@ const loginFormRules = reactive({
 const loginFormRef = ref(null)
 
 // 登录
-const login = () => {
+const onSubmit = () => {
     loginFormRef.value.validate(async valid => {
         if (!valid) return
-        const { data } = await USER.login(loginForm)
-        console.log(data);
+        login(loginForm).then(res=>{
+            console.log(res);
+            // 设置token
+            setToken(res.data.token)
+            // 获取用户信息
+            
+            // 设置状态
+            store.commit('setUser',res.data)
+            // 跳转到首页
+            router.push('/')
+        })
     })
 }
 
