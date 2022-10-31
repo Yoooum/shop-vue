@@ -38,7 +38,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import login from '../service/api/user'
+import { login } from '../service/api/user'
 import { useRouter } from 'vue-router'
 import { getToken,setToken,removeToken } from '../service/auth'
 import { useStore } from 'vuex'
@@ -72,7 +72,7 @@ const onSubmit = () => {
         if (!valid) return
         login(loginForm).then(res=>{
             console.log(res);
-            notice('success','登录成功')
+            notice('success',res.msg)
             // 设置token
             setToken(res.data.token)
             // 获取用户信息

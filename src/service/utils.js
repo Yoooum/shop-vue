@@ -6,7 +6,8 @@ export function notice(type,message) {
     ElMessage({
         message: message,
         type: type,
-        duration: 3 * 1000
+        duration: 3 * 1000,
+        grouping: true
     })
 }
 

@@ -4,7 +4,7 @@
             <el-card>
                 <h2 class="text-2xl font-bold mb-4">注册</h2>
                 <el-form ref="registerFormRef" :model="registerForm" :rules="registerFormRules" label-width="0px" class="w-60">
-                    <el-form-item prop="email">
+                    <el-form-item prop="username">
                         <el-input v-model="registerForm.username" placeholder="昵称">
                             <template #prepend>
                                 <el-icon>
@@ -47,7 +47,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import register from '../service/api/user'
+import { register } from '../service/api/user'
 import { useRouter } from 'vue-router'
 import { getToken,setToken,removeToken } from '../service/auth'
 import { useStore } from 'vuex'
@@ -56,12 +56,17 @@ const store = useStore()
 const router = useRouter()
 // 登录表单
 const registerForm = reactive({
+    username: '',
     email: '',
     password: ''
 })
 
 // 登录表单验证规则
 const registerFormRules = reactive({
+    username: [
+        { required: true, message: '请输入昵称', trigger: 'blur' },
+        { min: 1, max: 12, message: '长度在 1 到 12 个字符', trigger: 'blur' }
+    ],
     email: [
         { required: true, message: '请输入邮箱', trigger: 'blur' },
         { type: 'email', message: '请输入正确的邮箱', trigger: 'blur' }
@@ -79,17 +84,9 @@ const registerFormRef = ref(null)
 const onSubmit = () => {
     registerFormRef.value.validate(async valid => {
         if (!valid) return
-        register(registerForm).then(res=>{
-            console.log(res);
-            notice('success','登录成功')
-            // 设置token
-            setToken(res.data.token)
-            // 获取用户信息
-            
-            // 设置状态
-            store.commit('setUser',res.data)
-            // 跳转到首页
-            router.push('/')
+        register(registerForm).then(res => {
+            notice('success', res.msg)
+            router.push('/login')
         })
     })
 }
