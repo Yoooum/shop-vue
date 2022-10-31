@@ -26,6 +26,11 @@
                         <el-button class="w-60" type="primary" @click="onSubmit">登录</el-button>
                     </el-form-item>
                 </el-form>
+                <!--没有账号  -->
+                <div class="text-left text-xs">
+                    <span>没有账号？</span>
+                    <router-link to="/register" class=" text-purple-700 text-opacity-75 font-semibold">注册</router-link>
+                </div>
             </el-card>
         </el-col>
     </el-row>
