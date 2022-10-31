@@ -8,7 +8,7 @@
                         <el-input v-model="loginForm.email" placeholder="邮箱">
                             <template #prepend>
                                 <el-icon>
-                                    <User />
+                                    <Message />
                                 </el-icon>
                             </template>
                         </el-input>

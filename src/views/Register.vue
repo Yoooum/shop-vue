@@ -4,12 +4,20 @@
             <el-card>
                 <h2 class="text-2xl font-bold mb-4">注册</h2>
                 <el-form ref="registerFormRef" :model="registerForm" :rules="registerFormRules" label-width="0px" class="w-60">
-                    
+                    <el-form-item prop="email">
+                        <el-input v-model="registerForm.username" placeholder="昵称">
+                            <template #prepend>
+                                <el-icon>
+                                    <User />
+                                </el-icon>
+                            </template>
+                        </el-input>
+                    </el-form-item>
                     <el-form-item prop="email">
                         <el-input v-model="registerForm.email" placeholder="邮箱">
                             <template #prepend>
                                 <el-icon>
-                                    <User />
+                                    <Message />
                                 </el-icon>
                             </template>
                         </el-input>
@@ -29,8 +37,8 @@
                 </el-form>
                 <!--没有账号  -->
                 <div class="text-left text-xs">
-                    <span>没有账号？</span>
-                    <router-link to="/register" class=" text-purple-700 text-opacity-75 font-semibold">注册</router-link>
+                    <span>已有账号？</span>
+                    <router-link to="/login" class=" text-purple-700 text-opacity-75 font-semibold">登录</router-link>
                 </div>
             </el-card>
         </el-col>
