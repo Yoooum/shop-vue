@@ -14,6 +14,7 @@ service.interceptors.request.use(
         // 在发送请求之前做些什么
         // 自动添加token
         if (getToken()) {
+            config.headers['Content-Type'] = 'application/json'
             config.headers['token'] = getToken()
         }
         return config
@@ -31,7 +32,7 @@ service.interceptors.response.use(
         // 对响应数据做点什么
         const res = response.data
         // 响应错误
-        if (res.code !== 200) {
+        if (res.code !== 0) {
             ElMessage({
                 message: res.msg || 'Error',
                 type: 'error',
