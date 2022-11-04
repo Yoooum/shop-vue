@@ -20,14 +20,17 @@ http://localhost:8080/api
 响应
 ```json
 {
-    "code": 0,
-    "msg": "登录成功",
-    "data": {
-        "email": "test@p.p",
-        "username": "@cname",
-        "token": "token_1145141919",
-        "role": "admin"
-    }
+  "code": 0,
+  "msg": "登录成功",
+  "data": {
+    "user": {
+      "email": "email",
+      "password": "password",
+      "uid": 18,
+      "username": "username"
+    },
+    "token": "your_token"
+  }
 }
 ```
 
