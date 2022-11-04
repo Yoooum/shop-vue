@@ -3,10 +3,6 @@
 </script>
 
 <template>
-  <router-view></router-view>
+  <RouterView/>
+  <RouterView name="mainView"/>
 </template>
-
-<style scoped lang="windicss">
-
-
-</style>

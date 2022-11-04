@@ -32,7 +32,7 @@
                         </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button class="w-60" type="primary" @click="onSubmit">登录</el-button>
+                        <el-button class="w-60" type="primary" @click="onSubmit">注册</el-button>
                     </el-form-item>
                 </el-form>
                 <!--没有账号  -->
