@@ -4,7 +4,7 @@ import "element-plus/es/components/message/style/css"
 import { getToken,removeToken } from '../service/auth'
 
 const service = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: '/api',
     timeout: 5000
 })
 
